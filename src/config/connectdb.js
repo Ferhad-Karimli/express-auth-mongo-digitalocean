@@ -8,7 +8,8 @@ const authDb = {
 const connectDb = async () => {
   try {
     await mongoose.connect(
-      `mongodb+srv://${authDb.userName}:${authDb.password}@auth.ic7wchp.mongodb.net/`);
+      `mongodb+srv://${authDb.userName}:${authDb.password}@auth.ic7wchp.mongodb.net/`
+    );
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('MongoDB connection error:', error);
@@ -17,7 +18,3 @@ const connectDb = async () => {
 };
 
 module.exports = connectDb;
-
-// ferhadkarimli077_db_user,
-// eXX2lXzA2wu1WPgj
-// mongodb+srv://ferhadkarimli077_db_user:eXX2lXzA2wu1WPgj@auth.ic7wchp.mongodb.net/

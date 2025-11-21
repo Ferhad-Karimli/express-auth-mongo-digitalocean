@@ -4,18 +4,16 @@ const jwt = require('jsonwebtoken');
 
 exports.login = async (req, res) => {
   try {
-    console.log('trye girmedi');
-    const { email, password} = req.body;
-
+    
+    const { email, password } = req.body;
     const user = await SignUpSchema.findOne({ email });
-  console.log(user, 'login user');
+
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
-    console.log('password',password);
-    console.log(user.password,'user password');
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
-  console.log(isPasswordValid, 'isPasswordValid');
+   
     if (!isPasswordValid) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
