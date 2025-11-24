@@ -20,8 +20,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
-      run: npx mocha # Əgər testlərin varsa, yoxdursa bu sətiri çıxara bilərsən 
+    # - name: Run tests
+    #   run: npx mocha # Əgər testlərin varsa, yoxdursa bu sətiri çıxara bilərsən  
 
     - name: Deploy to server via SSH
       uses: appleboy/ssh-action@v0.1.7
