@@ -21,7 +21,7 @@ jobs:
       run: npm install
 
     - name: Run tests
-      run: npm test  # Əgər testlərin varsa, yoxdursa bu sətiri çıxara bilərsən
+      run: npx mocha # Əgər testlərin varsa, yoxdursa bu sətiri çıxara bilərsən 
 
     - name: Deploy to server via SSH
       uses: appleboy/ssh-action@v0.1.7
