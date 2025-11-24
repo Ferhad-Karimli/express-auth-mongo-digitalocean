@@ -1,0 +1,36 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches: [ main ]  # əsas branch adın fərqlidirsə, onu yaz
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18  # layihənin node versiyasına uyğun dəyişə bilərsən
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test  # Əgər testlərin varsa, yoxdursa bu sətiri çıxara bilərsən
+
+    - name: Deploy to server via SSH
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        script: |
+          cd /home/deploy/express-auth-mongo-digitalocean
+          git pull origin main
+          npm install
+          pm2 restart server
