@@ -41,8 +41,7 @@ exports.login = async (req, res) => {
 exports.userList = async (req,res) => {
   try{
     const users = await  SignUpSchema.find({})
-    console.log(users)
-    res.status(200).json({users})
+      res.status(200).json({users})
 
   }
   catch(error){
